@@ -19,7 +19,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :json => params
+    @user = User.find(params[:id])
+    if @user.session_token.nil?
+      redirect_to new_session_path
+    end
   end
 
   def update

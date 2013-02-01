@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user.authenticate(params[:user][:password])
       @user.session_token = (0...8).map{65.+(rand(26)).chr}.join
       @user.save
-      redirect_to show_user_path(@user)
+      redirect_to user_path(@user)
     else
       redirect_to new_session_path
     end
@@ -22,5 +22,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.log_out
+    redirect_to new_session_path
   end
 end

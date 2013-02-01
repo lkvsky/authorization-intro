@@ -5,4 +5,9 @@ class User <ActiveRecord::Base
   has_secure_password
 
   validates :username, :presence => true, :uniqueness => true
+
+  def log_out
+    self.session_token = nil
+  end
+
 end
