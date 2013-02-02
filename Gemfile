@@ -38,3 +38,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 gem 'bcrypt-ruby'
 gem 'better_errors'
+gem "letter_opener", :group => :development

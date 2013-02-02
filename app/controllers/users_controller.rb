@@ -10,8 +10,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save!
+      flash[:notice] = "You have created a new account."
+      UserMailer.welcome_email(@user).deliver
       redirect_to new_session_path
     else
+      flash[:notice] = errors.full_messages.first
       redirect_to new_user_path
     end
   end

@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_session_token(session[:session_token])
     @user.log_out
     session[:session_token] = nil
+    flash[:notice] = "You are successfully logged out."
     redirect_to new_session_path
   end
 end

@@ -1,11 +1,12 @@
 <h1>Sign-Up</h1>
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
   <%= f.label :username, "Username:" %>
   <%= f.text_field :username %>
   <br>
   <%= f.label :password, "Password:" %>
   <%= f.password_field :password %>
   <br>
-  <%= f.submit "Create!" %>
+  <br>
+  <%= f.submit "Create!", :class => "btn, btn-primary" %>
 <% end %>
 <%= link_to "Already have an account?", new_session_path %>
