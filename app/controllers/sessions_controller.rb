@@ -4,11 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.where(:username => params[:user][:username]).first
-
+    @user = User.find_by_username(params[:user][:username])
     if @user.authenticate(params[:user][:password])
-      @user.session_token = (0...8).map{65.+(rand(26)).chr}.join
-      @user.save
+      @session_token = SecureRandom.base64
+      @user.session_token = @session_token
+      @user.save!
+      session[:session_token] = @session_token
       redirect_to user_path(@user)
     else
       redirect_to new_session_path
@@ -22,8 +23,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find_by_session_token(session[:session_token])
     @user.log_out
+    session[:session_token] = nil
     redirect_to new_session_path
   end
 end

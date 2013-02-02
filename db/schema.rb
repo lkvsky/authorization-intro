@@ -11,12 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201171335) do
+ActiveRecord::Schema.define(:version => 20130201220239) do
 
   create_table "users", :force => true do |t|
     t.string "username"
     t.string "session_token"
     t.string "password_digest"
   end
+
+  add_index "users", ["session_token"], :name => "index_users_on_session_token"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

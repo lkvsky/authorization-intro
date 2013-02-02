@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    if @user.session_token.nil?
+    @user = User.find_by_session_token(session[:session_token])
+    if @user.session_token != session[:session_token]
       redirect_to new_session_path
     end
   end
