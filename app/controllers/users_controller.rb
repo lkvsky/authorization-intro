@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :current_user, :except => [:new, :create]
   def index
   end
 
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if @user.save!
       redirect_to new_session_path
     else
       redirect_to new_user_path
