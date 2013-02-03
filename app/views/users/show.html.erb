@@ -1,1 +1,17 @@
-<h1> Hello, <%= @user.username %>!</h1>
+<h1> Hello, <%= @user.name %>!</h1>
+<h3>My Feelings</h3>
+<%= form_for @post, :html => {:class => "form-horizontal"}, :url => { :action => "create", :controller => "posts"} do |f| %>
+  <%= f.label :text, "What's on your mind?" %>
+  <%= f.text_area :text, :rows => 3 %>
+  <%= f.submit "Let it go...", :class => "btn, btn-primary" %>
+<% end %>
+<% @user.recent_posts_first.each do |post| %>
+  <div class="row-fluid">
+    <div class="span12">
+      <%= post.text %>
+      <br><br>
+      ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~
+      <br><br>
+    </div>
+  </div>
+<% end %>

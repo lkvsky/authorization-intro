@@ -11,12 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
- body {
-  background-image: url('unicorn.jpeg');
-  background-repeat: none;
-  padding: 50px;
-  width: 90%;
-  text-align: center;
-  color: #FF0066;
- }

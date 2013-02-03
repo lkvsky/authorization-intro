@@ -38,4 +38,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 gem 'bcrypt-ruby'
 gem 'better_errors'
+gem 'bootstrap-sass', '2.1'
 gem "letter_opener", :group => :development
