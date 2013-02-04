@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :session_token
 
   has_secure_password
-  has_many :posts
+  has_many :posts, :dependent => :destroy
 
   validates :name, :presence => true, :length => { :minimum => 3, :maximum => 20 }
   validates :email, :presence => true, :uniqueness => true,

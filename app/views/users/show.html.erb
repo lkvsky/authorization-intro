@@ -3,7 +3,7 @@
 <%= form_for @post, :html => {:class => "form-horizontal"}, :url => { :action => "create", :controller => "posts"} do |f| %>
   <%= f.label :text, "What's on your mind?" %>
   <%= f.text_area :text, :rows => 3 %>
-  <%= f.submit "Let it go...", :class => "btn, btn-primary" %>
+  <%= f.submit "Let it go...", :class => "btn btn-primary" %>
 <% end %>
 <% @user.recent_posts_first.each do |post| %>
   <div class="row-fluid">

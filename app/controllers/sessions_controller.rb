@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
     if @user.authenticate(params[:user][:password])
       @session_token = SecureRandom.base64
       @user.session_token = @session_token
-      @user.save!
+      begin
+        @user.save!
+      rescue
+        redirect_to new_session_path
+      end
       session[:session_token] = @session_token
       redirect_to user_path(@user)
     else
