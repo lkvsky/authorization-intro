@@ -10,6 +10,16 @@
   font-size: 150%
  }
 
-  a {
+a {
   color: #FF0066;
- }
+}
+
+.btn-primary {
+  background-color: #FF0066;
+}
+
+#log-out {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

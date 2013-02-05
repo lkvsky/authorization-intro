@@ -8,9 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= button_to "Log Out!", session_path, :method => :delete %>
-  <p><%= flash.notice %></p>
-<%= yield %>
-
+  <div class="container">
+     <%= button_to "Log Out!", session_path, :method => :delete, :id => "log-out", :class => "btn btn-primary" %>
+    <h1>My Feelings</h1>
+    <p><%= flash.notice %></p>
+  <%= yield %>
+  </div>
 </body>
 </html>

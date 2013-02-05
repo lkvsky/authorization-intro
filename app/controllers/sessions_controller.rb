@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:user][:email])
     if @user.authenticate(params[:user][:password])
-      @session_token = SecureRandom.base64
-      @user.session_token = @session_token
+      session_token = SecureRandom.base64
+      @user.session_token = session_token
       @user.save!
-      session[:session_token] = @session_token
+      session[:session_token] = session_token
       redirect_to user_path(@user)
     else
       redirect_to new_session_path
