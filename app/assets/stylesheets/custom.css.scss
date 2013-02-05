@@ -18,8 +18,19 @@ a {
   background-color: #FF0066;
 }
 
+.well, textarea {
+  background-color: black;
+  color: #FF0066;
+}
+
 #log-out {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+#welcome {
+  position: absolute;
+  top: 20px;
+  right: 150px;
 }

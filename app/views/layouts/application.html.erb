@@ -8,11 +8,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="row-fluid">
+    <div class="span12">
+       <%= button_to "Log Out!", session_path, :method => :delete, :id => "log-out", :class => "btn btn-primary" %>
+       <p><%= flash.notice %></p>
+     </div>
+   </div>
+    <div class="row">
+      <div class="span12">
+        <h1>My Feelings</h1>
+      </div>
+    </div>
   <div class="container">
-     <%= button_to "Log Out!", session_path, :method => :delete, :id => "log-out", :class => "btn btn-primary" %>
-    <h1>My Feelings</h1>
-    <p><%= flash.notice %></p>
-  <%= yield %>
+    <%= yield %>
   </div>
 </body>
 </html>

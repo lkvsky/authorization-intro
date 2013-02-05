@@ -1,21 +1,22 @@
-<h3> Hello, <%= current_user.name %>!</h3>
+<p id="welcome">Hello, <%= current_user.name %>!</p>
+
 <div class="row-fluid">
-  <div class="span12">
+  <div class="span4">
+    <h3>What's on your mind?</h3>
     <%= form_for @post, :html => {:class => "form-inline input-append"}, :url => { :action => "create", :controller => "posts"} do |f| %>
-      <%= f.label :text, "What's on your mind?" %>
+      <%= f.text_area :text, :rows => 3 %>
       <br>
-      <%= f.text_area :text, :rows => 1 %>
       <%= f.submit "Let it go...", :class => "btn btn-primary" %>
     <% end %>
   </div>
-</div>
-<% @user.recent_posts_first.each do |post| %>
-  <div class="row-fluid">
-    <div class="span12">
+  <div class="span8">
+    <% @user.recent_posts_first.each do |post| %>
+      <div class="well">
+        <%= post.text %>
+      </div>
       <br>
       ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~
-      <br><br>
-      <%= post.text %>
-    </div>
+      <br>
+    <% end %>
   </div>
-<% end %>
+</div>
