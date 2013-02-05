@@ -4,17 +4,17 @@
   <div class="span4">
     <h3>What's on your mind?</h3>
     <%= form_for @post, :html => {:class => "form-inline, post-feeling"}, :url => { :action => "create", :controller => "posts"} do |f| %>
-      <%= f.text_area :text, :rows => 3 %>
+      <%= f.text_area :text, :rows => 5 %>
       <br>
-      <%= f.submit "Let it go...", :class => "btn btn-primary post-feeling" %>
+      <%= f.submit "Let it go...", :class => "btn btn-primary" %>
     <% end %>
   </div>
   <div class="span8 feed">
     <% @user.recent_posts_first.each do |post| %>
       <div class="well">
         <%= post.text %>
+        <span class="timestamp"><%= time_ago_in_words(post.created_at) %> ago</span>
       </div>
-      <br>
       ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ 
       <br><br>
     <% end %>

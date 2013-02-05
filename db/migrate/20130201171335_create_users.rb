@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :session_token
       t.string :password_digest
 
-      t.timestamp
+      t.timestamps
     end
   end
 end
