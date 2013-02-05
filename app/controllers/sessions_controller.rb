@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
       session[:session_token] = @session_token
       redirect_to user_path(@user)
     else
+      flash[:notice] = "That is probably not your password"
       redirect_to new_session_path
     end
   end
